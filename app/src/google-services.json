@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "297432702262",
+    "project_id": "instadon-78cf2",
+    "storage_bucket": "instadon-78cf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297432702262:android:154a3ddcb1c85e355ae797",
+        "android_client_info": {
+          "package_name": "com.example.instadon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297432702262-hfbkd488hrkk8vnnnel0hkjops000pi4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.instadon",
+            "certificate_hash": "0372a6d57b1c33f11e08038b39264b904479c70b"
+          }
+        },
+        {
+          "client_id": "297432702262-irtsrrc8rrh3mojlkrt85tb3jtc6qq39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5FW4QcqC6GUHWuBHU_vrC1JnOCdQpFVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297432702262-irtsrrc8rrh3mojlkrt85tb3jtc6qq39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

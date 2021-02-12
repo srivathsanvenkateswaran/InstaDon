@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">InstaDon</string>
+    <string name="post_hint">Share your ideas to the world!!</string>
+    <string name="add_new_post_button_text">Publish Post</string>
+</resources>

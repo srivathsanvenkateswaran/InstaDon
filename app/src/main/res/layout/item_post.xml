@@ -32,6 +32,7 @@
             app:layout_constraintTop_toTopOf="@id/userImage"
             android:layout_marginLeft="12dp"
             tools:text="Srivathsan Venkateswaran"
+            android:fontFamily="@font/montserrat_bold"
             android:textSize="16sp"
             android:textColor="@color/materialDarkThemeUserNameColor"
             android:textStyle="bold"/>
@@ -45,6 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/userName"
             android:layout_marginTop="4dp"
             tools:text="15 April 2020"
+            android:fontFamily="@font/montserrat_regular"
             android:textColor="@color/materialDarkThemeWhiteGrey"
             android:layout_marginLeft="12dp" />
 
@@ -56,6 +58,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userImage"
             android:textSize="16sp"
+            android:fontFamily="@font/montserrat_regular"
             android:layout_marginTop="12dp"
             tools:text="Hakuna Matata.. What a wonderful phrase... "
             android:textColor="@color/materialDarkThemePostTextFont" />
@@ -77,6 +80,7 @@
             app:layout_constraintLeft_toRightOf="@id/likeButton"
             app:layout_constraintTop_toTopOf="@id/likeButton"
             tools:text="10"
+            android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="6dp"
             app:layout_constraintBottom_toBottomOf="@id/likeButton" />
 

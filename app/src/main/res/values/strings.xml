@@ -2,4 +2,7 @@
     <string name="app_name">InstaDon</string>
     <string name="post_hint">Share your ideas to the world!!</string>
     <string name="add_new_post_button_text">Publish Post</string>
+    <string name="google_sign_up">Sign up with Google</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

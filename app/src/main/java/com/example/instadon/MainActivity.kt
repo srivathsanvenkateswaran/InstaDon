@@ -1,7 +1,9 @@
 package com.example.instadon
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -15,9 +17,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), IPostAdapter {
@@ -25,6 +35,7 @@ class MainActivity : AppCompatActivity(), IPostAdapter {
     private lateinit var adapter: PostAdapter
     private lateinit var postDao: PostDao
     private lateinit var auth: FirebaseAuth
+    private var db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,4 +117,28 @@ class MainActivity : AppCompatActivity(), IPostAdapter {
         postDao.updateLikes(postID)
     }
 
+    override fun onDeleted(postId: String) {
+        GlobalScope.launch {
+            auth = Firebase.auth
+            val currentUserId = auth.currentUser!!.uid
+            val post = postDao.getPostById(postId).await().toObject(Post::class.java)!!
+            val createdById = post.createdBy.userId
+
+            if(currentUserId == createdById){
+                withContext(Dispatchers.Main){
+                    val confirmDeleteDialog = android.app.AlertDialog.Builder(this@MainActivity)
+                            .setTitle("Confirm Deleting This Post")
+                            .setMessage("Do you want to delete this post?\nWarning: You can't undo this action..")
+                            .setPositiveButton("Delete"){ _, _ ->
+                                postDao.deletePost(postId)
+                            }
+                            .setNegativeButton("Cancel"){ _, _ ->
+                                Toast.makeText(this@MainActivity, "Cancelled delete action", Toast.LENGTH_LONG).show()
+                            }
+                            .create()
+                            .show()
+                }
+            }
+        }
+    }
 }

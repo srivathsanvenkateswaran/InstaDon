@@ -1,5 +1,10 @@
 package com.example.instadon.daos
 
+import android.app.AlertDialog
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
+import com.example.instadon.MainActivity
 import com.example.instadon.models.Post
 import com.example.instadon.models.User
 import com.google.android.gms.tasks.Task
@@ -11,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class PostDao {
 
@@ -50,4 +56,17 @@ class PostDao {
             postCollection.document(postId).set(post)
         }
     }
+
+    fun deletePost(postId: String){
+        db.collection("posts")
+                .document(postId)
+                .delete()
+                .addOnSuccessListener {
+                    Log.d(TAG, "DocumentSnapshot successfully deleted!")
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error deleting document", e)
+                }
+    }
+
 }

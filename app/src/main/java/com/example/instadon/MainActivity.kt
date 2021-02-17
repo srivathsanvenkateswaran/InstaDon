@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instadon.daos.PostDao
@@ -47,13 +48,12 @@ class MainActivity : AppCompatActivity(), IPostAdapter {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.googleSignOutMenu -> googleSignOut()
+            R.id.googleSignOutMenu -> confirmGoogleSignOut()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun googleSignOut() {
-//        Implement the Logic to sign out from Google here.
+    private fun googleSignOut(){
         Toast.makeText(this, "Signing out...", Toast.LENGTH_LONG).show()
 
         auth = Firebase.auth
@@ -61,6 +61,23 @@ class MainActivity : AppCompatActivity(), IPostAdapter {
 
         val intent = Intent(this, SignInActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun confirmGoogleSignOut() {
+//        Implement the Logic to sign out from Google here.
+
+        val confirmSignOutDialogBox = AlertDialog.Builder(this)
+                .setTitle("Confirm SignOut?")
+                .setMessage("Do you want to Sign Out from this Account?")
+                .setIcon(R.drawable.signout_alert_dialogue_icon)
+                .setPositiveButton("Sign Out"){ _, _ ->
+                    googleSignOut()
+                }
+                .setNegativeButton("Cancel"){ _, _ ->
+                    Toast.makeText(this, "Sign Out denied...", Toast.LENGTH_LONG).show()
+                }
+                .create()
+                .show()
     }
 
     private fun setUpRecyclerView() {

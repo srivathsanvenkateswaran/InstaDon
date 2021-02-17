@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstaDon">
-        <activity android:name=".AddNewPostActivity"></activity>
+        <activity android:name=".EditPostActivity"></activity>
+        <activity android:name=".AddNewPostActivity" />
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

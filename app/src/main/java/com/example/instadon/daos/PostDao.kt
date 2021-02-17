@@ -12,11 +12,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class PostDao {
 
@@ -69,4 +66,17 @@ class PostDao {
                 }
     }
 
+    fun updatePost(postId: String, postText: String){
+        Log.i("updatePost", postText)
+        CoroutineScope(Dispatchers.IO).launch {
+            val currentTime = System.currentTimeMillis()
+            postCollection.document(postId).update(
+                mapOf(
+                    "postText" to postText,
+                    "createdAt" to currentTime
+                )
+            )
+            Log.i("updatePost", "postText updated to "+postText)
+        }
+    }
 }

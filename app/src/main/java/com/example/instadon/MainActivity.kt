@@ -22,11 +22,8 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 
@@ -140,5 +137,11 @@ class MainActivity : AppCompatActivity(), IPostAdapter {
                 }
             }
         }
+    }
+
+    override fun editPost(postID: String) {
+        val intent = Intent(this, EditPostActivity::class.java)
+        intent.putExtra("postId", postID)
+        startActivity(intent)
     }
 }

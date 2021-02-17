@@ -28,6 +28,7 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, val listener: IPostAd
         var likeCount: TextView = itemView.findViewById(R.id.likeCount)
         var likeButton: ImageView = itemView.findViewById(R.id.likeButton)
         var deleteButton: ImageView = itemView.findViewById(R.id.deletePostButton)
+        var editPostButton: ImageView = itemView.findViewById(R.id.editPostButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -37,6 +38,9 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, val listener: IPostAd
         }
         postViewHolder.deleteButton.setOnClickListener{
             listener.onDeleted(snapshots.getSnapshot(postViewHolder.adapterPosition).id)
+        }
+        postViewHolder.editPostButton.setOnClickListener{
+            listener.editPost(snapshots.getSnapshot(postViewHolder.adapterPosition).id)
         }
         return postViewHolder
     }
@@ -65,6 +69,13 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, val listener: IPostAd
         else{
             holder.deleteButton.visibility = View.GONE
         }
+
+        if(currentUserId == model.createdBy.userId){
+            holder.editPostButton.setImageDrawable(ContextCompat.getDrawable(holder.editPostButton.context, R.drawable.ic_baseline_edit_24))
+        }
+        else{
+            holder.editPostButton.visibility = View.GONE
+        }
     }
 
 }
@@ -72,4 +83,5 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, val listener: IPostAd
 interface IPostAdapter{
     fun onLiked(postID: String)
     fun onDeleted(postID: String)
+    fun editPost(postID: String)
 }

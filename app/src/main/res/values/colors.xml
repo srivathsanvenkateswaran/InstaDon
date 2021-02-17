@@ -11,6 +11,7 @@
     <color name="materialDarkThemeBG">#212121</color>
 
     <color name="materialDarkThemeSandalFontColor">#FFD180</color>
+    <color name="materialDarkThemeDarkSandalFontColor">#FF9800</color>
     <color name="materialDarkThemeUserNameColor">#A7FFEB</color>
     <color name="materialDarkThemeWhiteFontColor">#F5F5F5</color>
     <color name="materialDarkThemeLikeCountFontCOlor">#B2DFDB</color>

@@ -17,9 +17,9 @@
         android:padding="16dp">
 
         <ImageView
+            android:id="@+id/userImage"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:id="@+id/userImage"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/userImage"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/editPostButton"
             app:layout_constraintTop_toTopOf="@id/userImage"
             android:layout_marginLeft="12dp"
             tools:text="Srivathsan Venkateswaran"
@@ -36,6 +36,22 @@
             android:textSize="16sp"
             android:textColor="@color/materialDarkThemeUserNameColor"
             android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/editPostButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/deletePostButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@drawable/ic_baseline_delete_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/createdAt"
@@ -71,14 +87,6 @@
             app:layout_constraintLeft_toLeftOf="@id/postTitle"
             app:layout_constraintTop_toBottomOf="@id/postTitle"
             android:layout_marginTop="16dp" />
-
-        <ImageView
-            android:id="@+id/deletePostButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            tools:src="@drawable/ic_baseline_delete_24"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/likeCount"
